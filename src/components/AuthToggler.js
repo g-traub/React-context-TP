@@ -5,7 +5,7 @@ export default () => (
   <AuthContext.Consumer>
     {(context) => (
       <span className="App-link" onClick={context.changeAuth}>
-        Se connecter
+        {context.isAuth ? "Se déconnecter" : "Se connecter"}
       </span>
     )}
   </AuthContext.Consumer>
