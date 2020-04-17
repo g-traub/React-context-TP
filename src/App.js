@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import AuthContext from "./context/Auth";
-import AuthStateDisplayer from "./components/AuthStateDisplayer";
-import AuthToggler from "./components/AuthToggler";
+import AuthBar from "./components/AuthBar/AuthBar";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -15,8 +14,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <AuthContext.Provider value={{ isAuth, changeAuth: toggleAuth }}>
-        <AuthStateDisplayer />
-        <AuthToggler />
+        <AuthBar />
       </AuthContext.Provider>
     </div>
   );
