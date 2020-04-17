@@ -1,28 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import AuthContext from "./context/Auth";
-import Consumer from "./components/Consumer";
+import AuthStateDisplayer from "./components/AuthStateDisplayer";
+import AuthToggler from "./components/AuthToggler";
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  const toggleAuth = () => setIsAuth(!isAuth);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
-      <AuthContext.Provider value={{ isAuth: false }}>
-        <Consumer />
+      <AuthContext.Provider value={{ isAuth, changeAuth: toggleAuth }}>
+        <AuthStateDisplayer />
+        <AuthToggler />
       </AuthContext.Provider>
     </div>
   );
